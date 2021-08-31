@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta -->
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Links -->
+  <link rel="stylesheet" href="./css/main.min.css">
+
+  <title>Les Petits Plats</title>
+</head>
+
+<body>
+  <div class="container">
+    <header class="header">
+      <a href="index.html" aria-label="Aller à la page d'accueil">
+        <img src="./img/logo.svg" alt="Logo des petits plats" class="header__logo" role="img">
+      </a>
+    </header>
+
+    <main class="main">
+      <section class="section-search">
+        <form class="search">
+          <div class="search__box">
+            <input type="search" inputmode="search" class="search__input"
+              placeholder="Rechercher un ingrédient, appariel, ustensiles ou une recette"
+              aria-label="Rechercher un ingrédient, appariel, ustensiles ou une recette" autocomplete="off">
+          </div>
+        </form>
+
+        <div class="filters">
+          <div class="filters-selected"></div>
+
+          <form class="filters-list">
+            <div class="filters-list__ingredients">
+              <input type="search" inputmode="search" placeholder="Ingrédients">
+              <button type="button" role="button" aria-label="Ouvrir">
+                <img src="./img/Vector.svg" alt="Ouvrir">
+              </button>
+            </div>
+
+            <div class="filters-list__appliance">
+              <input type="search" inputmode="search" placeholder="Appareil">
+              <button type="button" role="button" aria-label="Ouvrir">
+                <img src="./img/Vector.svg" alt="Ouvrir">
+              </button>
+            </div>
+
+            <div class="filters__utensils">
+              <input type="search" inputmode="search" placeholder="Ustensiles">
+              <button type="button" role="button" aria-label="Ouvrir">
+                <img src="./img/Vector.svg" alt="Ouvrir">
+              </button>
+            </div>
+          </form>
+        </div>
+      </section>
+
+      <section class="section-result">
+
+      </section>
+    </main>
+  </div>
+</body>
+
+</html>
