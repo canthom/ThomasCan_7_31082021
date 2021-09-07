@@ -24,3 +24,14 @@ ingredientClose.addEventListener('click', (e) => {
 
   ingredientClose.parentNode.remove();
 })
+
+// RECUPERER LES DONNEES
+import { recipes } from './recipes.js';
+import { Recipe } from './class/Recipe.js';
+
+
+recipes.forEach(element => {
+  const recipe = new Recipe(element.id, element.name, element.servings, element.ingredients, element.time, element.description, element.appliance, element.ustensils);
+
+  recipe.render();
+})

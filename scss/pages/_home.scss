@@ -134,13 +134,18 @@
 
 .section-result {
   width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .result {
+  flex-basis: 30%;
   width: 38rem;
   background-color: variables.$color-white-secondary;
   border-radius: variables.$default-radius;
   overflow: hidden;
+  margin-bottom: 5rem;
 
   &__img {
     height: 18rem;
@@ -150,9 +155,11 @@
   &__info {
     padding: 2rem;
     display: flex;
-    align-items: center;
+
     justify-content: space-between;
     flex-wrap: wrap;
+    height: 18rem;
+    overflow: hidden;
 
     & > * {
       flex-basis: 50%;
@@ -161,6 +168,7 @@
 
   &__title {
     font-size: 1.8rem;
+    font-weight: 400;
   }
 
   &__time {
@@ -179,18 +187,16 @@
     margin-left: 0.7rem;
   }
 
-  &__recipe {
+  &__ingredients {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    font-size: 1.2rem;
+    height: 100%;
+  }
+
+  &__desc {
     font-size: 1.2rem;
     font-family: variables.$secondary-font;
-  }
-}
-
-.ingredients {
-  display: flex;
-  font-size: 1.2rem;
-
-  span:first-of-type {
-    font-weight: 700;
-    margin-right: 3px;
   }
 }
