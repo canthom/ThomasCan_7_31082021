@@ -1,0 +1,196 @@
+@use '../abstracts/variables';
+
+.section-search {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+
+// Barre de recherche
+.search {
+  &__input {
+    width: 100%;
+    height: 7rem;
+    padding: 2rem;
+    border-radius: variables.$default-radius;
+    border: none;
+    background-color: variables.$color-white-secondary;
+    font-size: 1.8rem;
+    margin-bottom: 2rem;
+  }
+}
+
+// Filtres
+.filters {
+  // Filtre sélectionné
+  &-selected {
+    display: flex;
+    margin-bottom: 1.5rem;
+
+    &__box {
+      padding: 1rem 2.2rem;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: variables.$color-white;
+
+      border-radius: variables.$default-radius;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--ingredients {
+        background-color: variables.$color-ingredients;
+      }
+    }
+
+    &__text {
+      margin-right: 1.3rem;
+    }
+  }
+
+  &-list {
+    display: flex;
+
+    &__box {
+      width: 17rem;
+      height: 7rem;
+      position: relative;
+      border-radius: variables.$default-radius;
+      margin-right: 2rem;
+      transition: all 0.2s;
+
+      input {
+        padding: 2.3rem 1.5rem;
+        background-color: transparent;
+        border: none;
+        width: 100%;
+        height: 100%;
+        font-size: 1.8rem;
+
+        &::placeholder {
+          color: variables.$color-white;
+        }
+      }
+
+      button {
+        position: absolute;
+        z-index: 100;
+        right: 1.5rem;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: transparent;
+        border: none;
+      }
+
+      &--ingredients {
+        background-color: variables.$color-ingredients;
+      }
+
+      &--appliance {
+        background-color: variables.$color-appliance;
+      }
+
+      &--utensils {
+        background-color: variables.$color-utensils;
+      }
+
+      &--active {
+        height: unset;
+        position: relative;
+        width: 67rem;
+
+        div:first-of-type {
+          position: relative;
+        }
+
+        div:last-of-type {
+          box-sizing: border-box;
+          padding: 2.5rem 2rem 1.5rem;
+          position: absolute;
+          background-color: variables.$color-ingredients;
+          z-index: 1000;
+          width: 67rem;
+        }
+
+        button {
+          img {
+            transform: rotate(180deg);
+          }
+        }
+
+        table {
+          color: variables.$color-white;
+          width: 100%;
+        }
+      }
+
+      &--inactive {
+        div:last-of-type {
+          display: none;
+        }
+      }
+    }
+  }
+}
+
+.section-result {
+  width: 100%;
+}
+
+.result {
+  width: 38rem;
+  background-color: variables.$color-white-secondary;
+  border-radius: variables.$default-radius;
+  overflow: hidden;
+
+  &__img {
+    height: 18rem;
+    background-color: variables.$color-grey;
+  }
+
+  &__info {
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    & > * {
+      flex-basis: 50%;
+    }
+  }
+
+  &__title {
+    font-size: 1.8rem;
+  }
+
+  &__time {
+    font-size: 1.8rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__title,
+  &__time {
+    margin-bottom: 2rem;
+  }
+
+  &__minutes {
+    margin-left: 0.7rem;
+  }
+
+  &__recipe {
+    font-size: 1.2rem;
+    font-family: variables.$secondary-font;
+  }
+}
+
+.ingredients {
+  display: flex;
+  font-size: 1.2rem;
+
+  span:first-of-type {
+    font-weight: 700;
+    margin-right: 3px;
+  }
+}
