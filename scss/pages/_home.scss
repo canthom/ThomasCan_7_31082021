@@ -89,8 +89,8 @@
         background-color: variables.$color-appliance;
       }
 
-      &--utensils {
-        background-color: variables.$color-utensils;
+      &--ustensils {
+        background-color: variables.$color-ustensils;
       }
 
       &--active {
@@ -103,23 +103,29 @@
         }
 
         div:last-of-type {
-          box-sizing: border-box;
           padding: 2.5rem 2rem 1.5rem;
           position: absolute;
-          background-color: variables.$color-ingredients;
           z-index: 1000;
+          background-color: inherit;
           width: 67rem;
+
+          ul {
+            height: 100%;
+            box-sizing: border-box;
+            list-style: none;
+            color: variables.$color-white;
+            column-count: 3;
+
+            li {
+              margin-bottom: 0.5rem;
+            }
+          }
         }
 
         button {
           img {
             transform: rotate(180deg);
           }
-        }
-
-        table {
-          color: variables.$color-white;
-          width: 100%;
         }
       }
 
@@ -141,7 +147,6 @@
 
 .result {
   flex-basis: 30%;
-  width: 38rem;
   background-color: variables.$color-white-secondary;
   border-radius: variables.$default-radius;
   overflow: hidden;
@@ -158,17 +163,24 @@
 
     justify-content: space-between;
     flex-wrap: wrap;
-    height: 18rem;
-    overflow: hidden;
+  }
 
-    & > * {
-      flex-basis: 50%;
-    }
+  &__box {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 100%;
+    width: 100%;
+    margin-bottom: 2rem;
   }
 
   &__title {
     font-size: 1.8rem;
     font-weight: 400;
+    flex: 1;
+
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
   }
 
   &__time {
@@ -176,15 +188,17 @@
     font-weight: 700;
     display: flex;
     justify-content: flex-end;
+
+    img {
+      margin-right: 0.7rem;
+    }
+
+    width: max-content;
   }
 
-  &__title,
-  &__time {
-    margin-bottom: 2rem;
-  }
-
-  &__minutes {
-    margin-left: 0.7rem;
+  &__ingredients,
+  &__desc {
+    flex-basis: 50%;
   }
 
   &__ingredients {
@@ -192,7 +206,7 @@
     flex-direction: column;
     justify-content: flex-start;
     font-size: 1.2rem;
-    height: 100%;
+    height: min-content;
   }
 
   &__desc {

@@ -29,7 +29,7 @@
       <section class="section-search">
         <form class="search">
           <div class="search__box">
-            <input type="search" inputmode="search" class="search__input"
+            <input type="search" inputmode="search" class="search__input" id="search"
               placeholder="Rechercher un ingrédient, appariel, ustensiles ou une recette"
               aria-label="Rechercher un ingrédient, appariel, ustensiles ou une recette" autocomplete="off">
           </div>
@@ -54,141 +54,41 @@
               </div>
 
               <div>
-                <table>
-                  <tr>
-                    <td>Lait de coco</td>
-                    <td>Jus de citron</td>
-                    <td>Crème de coco</td>
-                  </tr>
-
-                  <tr>
-                    <td>Sucre</td>
-                    <td>Galçons</td>
-                    <td>Thon Rouge</td>
-                  </tr>
-
-                  <tr>
-                    <td>Concombre</td>
-                    <td>Tomate</td>
-                    <td>Carotte</td>
-                  </tr>
-
-                  <tr>
-                    <td>Citron Vert</td>
-                    <td>Poulet</td>
-                    <td>Coulis de tomate</td>
-                  </tr>
-
-                  <tr>
-                    <td>Oignon</td>
-                    <td>Poivron Rouge</td>
-                    <td>Huile d'olive</td>
-                  </tr>
-
-                  <tr>
-                    <td>Riz Blanc</td>
-                    <td>Thon en miettes</td>
-                    <td>Oeuf dur</td>
-                  </tr>
-
-                  <tr>
-                    <td>Maïs</td>
-                    <td>Vinaigrette</td>
-                    <td>Pâte feuilletée</td>
-                  </tr>
-
-                  <tr>
-                    <td>Crème fraiche</td>
-                    <td>Gruyère râpé</td>
-                    <td>Moutarde de Dijon</td>
-                  </tr>
-
-                  <tr>
-                    <td>Pomme</td>
-                    <td>Oeuf</td>
-                    <td>Sucre en Poudre</td>
-                  </tr>
-
-                  <tr>
-                    <td>Chocolat au lait</td>
-                    <td>Crème liquide</td>
-                    <td>Beurre</td>
-                  </tr>
-
-
-                </table>
-
+                <ul id="ingredients"></ul>
               </div>
             </div>
 
-            <div class="filters-list__box filters-list__box--appliance">
-              <input type="search" inputmode="search" placeholder="Appareil">
-              <button type="button" role="button" aria-label="Ouvrir">
-                <img src="./img/open.svg" alt="Ouvrir">
-              </button>
+            <div class="filters-list__box filters-list__box--appliance filters-list__box--inactive">
+              <div>
+                <input type="search" inputmode="search" placeholder="Appareil">
+                <button id="appliancesOpen" type="button" role="button" aria-label="Ouvrir">
+                  <img src="./img/open.svg" alt="Ouvrir">
+                </button>
+              </div>
+
+              <div>
+                <ul id="appliances"></ul>
+              </div>
             </div>
 
-            <div class="filters-list__box filters-list__box--utensils">
-              <input type="search" inputmode="search" placeholder="Ustensiles">
-              <button type="button" role="button" aria-label="Ouvrir">
-                <img src="./img/open.svg" alt="Ouvrir">
-              </button>
+            <div class="filters-list__box filters-list__box--ustensils filters-list__box--inactive">
+              <div>
+                <input type="search" inputmode="search" placeholder="Ustensiles">
+                <button id="ustensilsOpen" type="button" role="button" aria-label="Ouvrir">
+                  <img src="./img/open.svg" alt="Ouvrir">
+                </button>
+              </div>
+
+              <div>
+                <ul id="ustensils"></ul>
+              </div>
+
             </div>
           </form>
         </div>
       </section>
 
       <section class="section-result">
-        <div class="result">
-          <div class="result__img"></div>
-
-          <div class="result__info">
-
-            <h2 class="result__title">Limonade de Coco</h2>
-            <div class="result__time">
-              <img src="./img/time.svg" alt="Symbole d'horloge">
-              <span class="result__minutes">10 min</span>
-            </div>
-
-            <div class="result__ingredients">
-              <div class="ingredients">
-                <span>Lait de coco:</span>
-                <span>400ml</span>
-              </div>
-
-              <div class="ingredients">
-                <span>Jus de citron:</span>
-                <span>2</span>
-              </div>
-
-              <div class="ingredients">
-                <span>Crème de coco:</span>
-                <span>4 cuillères</span>
-              </div>
-
-              <div class="ingredients">
-                <span>Sucre:</span>
-                <span>20g</span>
-              </div>
-
-              <div class="ingredients">
-                <span>Glaçons:</span>
-                <span>2</span>
-              </div>
-            </div>
-
-            <div class="result__desc">
-              <p>
-                Mettre les glaçons à votre goût dans le blender, ajouter le lait, la crème de coco, le jus de 2 citrons
-                et
-                le sucre. Mixer jusqu'à avoir la consistence désirée
-              </p>
-            </div>
-
-          </div>
-
-
-        </div>
       </section>
     </main>
   </div>

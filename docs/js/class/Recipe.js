@@ -18,41 +18,34 @@ class Recipe {
       const divResult = document.createElement('div');
       const divImg = document.createElement('div');
       const divInfo = document.createElement('div');
-      const h2 = document.createElement('h2');
-      const divTime = document.createElement('div');
-      const imgTime = document.createElement('img');
+      const divInfoBox = document.createElement('div');
+      const spanTitle = document.createElement('span');
       const spanTime = document.createElement('span');
       const divIngredients = document.createElement('div');
-      const divDesc = document.createElement('div');
-      const p = document.createElement('p');
+      const paraDesc = document.createElement('p');
 
       // Classes
       divResult.classList.add('result');
       divImg.classList.add('result__img');
       divInfo.classList.add('result__info');
-      h2.classList.add('result__title');
-      divTime.classList.add('result__time');
+      divInfoBox.classList.add('result__box');
+      spanTitle.classList.add('result__title');
+      spanTime.classList.add('result__time');
       spanTime.classList.add('result__minutes');
       divIngredients.classList.add('result__ingredients');
-      divDesc.classList.add('result__desc');
-
-      // Set Attribut
-      imgTime.setAttribute('src', './img/time.svg');
-      imgTime.setAttribute('alt', `Symbole d'horloge`);
+      paraDesc.classList.add('result__desc');
 
       // Contenu
-      h2.innerHTML = this.name;
-      spanTime.innerHTML = `${this.time} min`;
-      p.innerHTML = this.description;
+      spanTitle.innerHTML = this.name;
+      spanTime.innerHTML = `<img src="./img/time.svg"> ${this.time} min`;
+      paraDesc.innerHTML = `${this.description.substr(0, 200)}...`;
 
       // Append
       container.append(divResult);
       divResult.append(divImg, divInfo);
-      divInfo.append(h2, divTime, divIngredients, divDesc);
-      divTime.append(imgTime, spanTime);
-      
-      divDesc.append(p);
-
+      divInfo.append(divInfoBox, divIngredients, paraDesc);
+      divInfoBox.append(spanTitle, spanTime);
+  
       this.ingredients.forEach(element => {
         const divIngreBox = document.createElement('div');
         const span = document.createElement('span');
