@@ -54,8 +54,10 @@ class Recipe {
 
         if (element.unit) {
           span.innerHTML = `<strong>${element.ingredient}</strong>` + ': ' + element.quantity + ' ' + element.unit;
-        } else {
+        } else if (element.quantity) {
           span.innerHTML = `<strong>${element.ingredient}</strong>` + ': ' + element.quantity;
+        } else {
+          span.innerHTML = `<strong>${element.ingredient}</strong>`;
         }
 
         divIngredients.append(divIngreBox);
