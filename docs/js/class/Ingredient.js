@@ -7,8 +7,8 @@ class Ingredient {
     window.addEventListener('click', (e) => {
       const box = document.querySelector('.filters-list__box--ingredients');
       if (!e.target.closest('.filters-list__box--ingredients div')) {
-          box.classList.remove('filters-list__box--active');
-          box.classList.add('filters-list__box--inactive');
+        box.classList.remove('filters-list__box--active');
+        box.classList.add('filters-list__box--inactive');
       }
     })
   }
@@ -35,6 +35,35 @@ class Ingredient {
     const li = document.createElement('li');
     li.innerHTML = this.ingredient;
     ul.append(li);
+
+    li.addEventListener('click', () => {
+      this.selectFilter();
+    })
+  }
+
+  selectFilter() {
+    const container = document.querySelector('.filters-selected');
+    const div = document.createElement('div');
+    const span = document.createElement('span');
+    const img = document.createElement('img');
+
+    div.classList.add('filters-selected__box');
+    div.classList.add('filters-selected__box--ingredients');
+    span.classList.add('filters-selected__text');
+    img.classList.add('ingredientClose');
+    
+    img.setAttribute('src', './img/close.svg');
+    img.setAttribute('alt', 'Fermer');
+
+    span.innerHTML = this.ingredient;
+
+    container.append(div);
+    div.append(span, img);
+
+    // Event
+    img.addEventListener('click', () => {
+      img.parentNode.remove();
+    })
   }
 
   static init() {

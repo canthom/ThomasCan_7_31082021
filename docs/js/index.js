@@ -10,17 +10,7 @@ Appliance.init();
 Ustensil.init();
 Ingredient.init();
 
-// SUPPRIMER UN FILTRE SELECTIONNE
-const ingredientClose = document.querySelector('#ingredientClose');
-
-ingredientClose.addEventListener('click', (e) => {
-  e.preventDefault;
-
-  ingredientClose.parentNode.remove();
-})
-
 // AFFICHAGE PAR DEFAUT DE LA PAGE
-
 recipes.forEach(element => {
   const recipe = new Recipe(element.id, element.name, element.servings, element.ingredients, element.time, element.description, element.appliance, element.ustensils);
   recipe.render();
