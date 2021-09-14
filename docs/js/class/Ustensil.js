@@ -1,3 +1,6 @@
+import { renderFilters } from '../functions/renderFilters.js';
+import { renderRecipes } from '../functions/renderRecipes.js';
+
 class Ustensil {
   constructor(ustensil) {
     this.ustensil = ustensil;
@@ -38,6 +41,8 @@ class Ustensil {
 
     li.addEventListener('click', () => {
       this.selectFilter();
+      renderRecipes();
+      renderFilters();
     })
   }
 
@@ -63,6 +68,8 @@ class Ustensil {
     // Event
     img.addEventListener('click', () => {
       img.parentNode.remove();
+      renderRecipes();
+      renderFilters();
     })
   }
 

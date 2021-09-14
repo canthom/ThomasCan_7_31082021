@@ -1,3 +1,6 @@
+import { renderFilters } from '../functions/renderFilters.js';
+import { renderRecipes } from '../functions/renderRecipes.js';
+
 class Appliance {
   constructor(appliance) {
     this.appliance = appliance;
@@ -38,6 +41,8 @@ class Appliance {
     
     li.addEventListener('click', () => {
       this.selectFilter();
+      renderRecipes();
+      renderFilters();
     })
   }
 
@@ -63,6 +68,8 @@ class Appliance {
     // Event
     img.addEventListener('click', () => {
       img.parentNode.remove();
+      renderRecipes();
+      renderFilters();
     })
   }
 
