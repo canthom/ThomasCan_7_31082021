@@ -1,4 +1,3 @@
-import { renderFilters } from '../functions/renderFilters.js';
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
 
@@ -46,7 +45,6 @@ class Appliance {
       ////// TEST
       addFilter('Appliance', this.appliance);
       renderRecipes();
-      renderFilters();
     })
   }
 
@@ -74,7 +72,6 @@ class Appliance {
       img.parentNode.remove();
       removeFilter(span.textContent);
       renderRecipes();
-      renderFilters();
     })
   }
 

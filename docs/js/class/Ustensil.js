@@ -1,7 +1,5 @@
-import { renderFilters } from '../functions/renderFilters.js';
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
-
 
 class Ustensil {
   constructor(ustensil) {
@@ -46,7 +44,6 @@ class Ustensil {
 
       addFilter('Ustensil', this.ustensil);
       renderRecipes();
-      renderFilters();
     })
   }
 

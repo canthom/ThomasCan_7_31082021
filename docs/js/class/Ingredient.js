@@ -1,6 +1,6 @@
-import { renderFilters } from '../functions/renderFilters.js';
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
+import { checkFilter } from '../functions/checkFilter.js';
 
 class Ingredient {
   constructor(ingredient) {
@@ -43,10 +43,9 @@ class Ingredient {
     li.addEventListener('click', () => {
       this.selectFilter();
 
-      //////
       addFilter('Ingredient', this.ingredient);
+      checkFilter();
       renderRecipes();
-      renderFilters();
     })
   }
 
