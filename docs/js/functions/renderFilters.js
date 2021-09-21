@@ -2,6 +2,7 @@ import { recipes } from '../recipes.js';
 import { Appliance } from '../class/Appliance.js';
 import { Ustensil } from '../class/Ustensil.js';
 import { Ingredient } from '../class/Ingredient.js';
+import { filters } from './addFilter.js';
 
 function renderFilters() {
   let result = recipes;
@@ -15,80 +16,41 @@ function renderFilters() {
     element.innerHTML = '';
   })
 
-  const filterAppli = document.querySelector('.filters-selected__box--appliance span');
-  const filterUst = document.querySelector('.filters-selected__box--ustensils span');
-  let filter = '';
+  if (filters.length != 0) {
+    filters.forEach(element => {
+      const elemValue = element.value;
 
-  if (filterAppli) {
-    filter = 'Appliance';
-
-  } else if (filterUst) {
-    filter = 'Ustensils';
-  }
-
-  switch (filter) {
-    case 'Appliance':
-      console.log('Appliance !')
-      result = recipes.filter(element => {
-        return element.appliance.includes(filterAppli.textContent);
-      })
-
-      result.forEach(element => {
-        element.ingredients.forEach(element => {
-          ingredients.push(element.ingredient);
+      if (element.type === 'Ingredient') {
+        result = recipes.filter(element => {
+          return element.ingredients.find(element => element.ingredient.includes(elemValue));
         })
-        appliances.push(element.appliance);
-        element.ustensils.forEach(element => {
-          ustensils.push(element);
-        })
-      })
-      break;
-    case 'Ustensils':
-      console.log('Ustensils')
-      result = recipes.filter(element =>  {
-        return element.ustensils.includes(filterUst.textContent);
-      })
-
-      result.forEach(element => {
-        element.ingredients.forEach(element => {
-          ingredients.push(element.ingredient);
-        })
-        appliances.push(element.appliance);
-        element.ustensils.forEach(element => {
-          ustensils.push(element);
-        })
-      })
-      break;
-    default : 
-      console.log('Default !')
-      recipes.forEach(element => {
-        element.ingredients.forEach(element => {
-          ingredients.push(element.ingredient);
-        })
-        appliances.push(element.appliance);
-        element.ustensils.forEach(element => {
-          ustensils.push(element);
-        })
-      })
-  }
-
-  if (filterAppli) {
-    // Filtrer selon le choix
-    result = recipes.filter(element => {
-      return element.appliance.includes(filterAppli.textContent);
-    })
+      }
   
-    result.forEach(element => {
-      element.ingredients.forEach(element => {
-        ingredients.push(element.ingredient);
-      })
-      appliances.push(element.appliance);
-      element.ustensils.forEach(element => {
-        ustensils.push(element);
+      if (element.type === 'Appliance') {
+        result = recipes.filter(element => {
+          return element.appliance.includes(elemValue);
+        })
+      } 
+      
+      if (element.type === 'Ustensil') {
+        result = recipes.filter(element =>  {
+          return element.ustensils.includes(elemValue);
+        })
+      }
+
+      result.forEach(element => {
+        element.ingredients.forEach(element => {
+          ingredients.push(element.ingredient);
+        })
+        appliances.push(element.appliance);
+        element.ustensils.forEach(element => {
+          ustensils.push(element);
+        })
       })
     })
-
-  } else {
+  } 
+  
+  if (filters.length === 0) {
     recipes.forEach(element => {
       element.ingredients.forEach(element => {
         ingredients.push(element.ingredient);
@@ -100,7 +62,8 @@ function renderFilters() {
     })
   }
 
-  const ingredientsUnique = [...new Set(ingredients)].slice(0, 30);
+  // RANGER PAR ORDRE ALPHABETIQUE
+  const ingredientsUnique = [...new Set(ingredients)];
   ingredientsUnique.sort(function (a, b) {
     if (a < b) {
       return -1;
@@ -125,34 +88,6 @@ function renderFilters() {
     const appliance = new Appliance(element);
     appliance.renderPannel();
   })
-
-  // Recherche APPAREIL
-  const appliSearch = document.querySelector('#applianceSearch');
-  appliSearch.oninput = searchAppliance;
-  function searchAppliance() {
-    const ul = document.querySelector('#appliances');
-    if (appliSearch.value.length > 3) {
-      ul.innerHTML = '';
-      
-      const result = appliancesUnique.filter(element => {
-        return element.toLocaleLowerCase().includes(appliSearch.value.toLocaleLowerCase())
-      })
-
-      result.forEach(element => {
-        const appliance = new Appliance(element);
-        appliance.renderPannel();
-      })
-    }
-
-    if (appliSearch.value.length === 0) {
-      ul.innerHTML = '';
-      appliancesUnique.forEach(element => {
-        const appliance = new Appliance(element);
-        appliance.renderPannel();
-      })
-    }
-  }
-  searchAppliance();
 
   const ustensilsUnique = [...new Set(ustensils)];
   ustensilsUnique.sort(function (a, b) {

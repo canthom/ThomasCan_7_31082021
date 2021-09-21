@@ -1,3 +1,7 @@
+import { renderFilters } from '../functions/renderFilters.js';
+import { renderRecipes } from '../functions/renderRecipes.js';
+import { addFilter, removeFilter } from '../functions/addFilter.js';
+
 class Ingredient {
   constructor(ingredient) {
     this.ingredient = ingredient;
@@ -38,6 +42,11 @@ class Ingredient {
 
     li.addEventListener('click', () => {
       this.selectFilter();
+
+      //////
+      addFilter('Ingredient', this.ingredient);
+      renderRecipes();
+      renderFilters();
     })
   }
 

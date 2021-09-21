@@ -7,11 +7,21 @@ search.oninput = startSearch;
 function startSearch() {
   if (search.value.length > 3) {
     container.innerHTML = '';
-    let result = recipes;
+    let result = [];
 
-    result = recipes.filter(element => {
-      return element.ingredients.find(element => element.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())) || element.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()) || element.description.toLocaleLowerCase().includes(search.value.toLocaleLowerCase());
-    });
+    recipes.forEach(element => {
+      if (element.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())) {
+        result.push(element);
+      }
+
+      if (element.description.toLocaleLowerCase().includes(search.value.toLocaleLowerCase())) {
+        result.push(element);
+      }
+
+      if (element.ingredients.find(element => element.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))) {
+        result.push(element);
+      }
+    })
     
     result.forEach(element => {
       const recipe = new Recipe(element.id, element.name, element.servings, element.ingredients, element.time, element.description, element.appliance, element.ustensils);
