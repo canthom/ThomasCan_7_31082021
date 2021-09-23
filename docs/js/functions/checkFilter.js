@@ -22,7 +22,6 @@ function checkFilter(recipesArray) {
       })
     }
   })
-
   return recipesArray;
 }
 

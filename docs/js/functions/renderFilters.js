@@ -10,9 +10,6 @@ function renderFilters(recipesArray) {
   let ustensils = [];
 
   recipesArray = checkFilter(recipesArray);
-
-  
-  console.log(recipesArray);
   
   // RESET DES FILTRES
   const uls = document.querySelectorAll('ul');

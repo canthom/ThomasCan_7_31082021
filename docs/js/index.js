@@ -13,16 +13,17 @@ Ustensil.init();
 Ingredient.init();
 
 // AFFICHAGE PAR DEFAUT DE LA PAGE
-let test = [...recipes];
+let result = [...recipes];
+
 
 function refresh() {
-  renderRecipes(test);
-  renderFilters(test);
+  renderRecipes(result);
+  renderFilters(result);
 }
 export { refresh };
 
-renderRecipes(test);
-renderFilters(test);
+renderRecipes(result);
+renderFilters(result);
 
 // RECHERCHE
-startSearch(test);
+startSearch(result);

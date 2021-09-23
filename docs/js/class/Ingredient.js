@@ -71,7 +71,7 @@ class Ingredient {
     img.addEventListener('click', () => {
       img.parentNode.remove();
       removeFilter(span.textContent);
-      renderRecipes();
+      refresh();
     })
   }
 

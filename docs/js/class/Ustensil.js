@@ -71,7 +71,7 @@ class Ustensil {
     img.addEventListener('click', () => {
       img.parentNode.remove();
       removeFilter(this.ustensil);
-      renderRecipes();
+      refresh();
     })
   }
 
