@@ -1,6 +1,6 @@
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
-import { checkFilter } from '../functions/checkFilter.js';
+import { refresh } from '../index.js';
 
 class Ingredient {
   constructor(ingredient) {
@@ -44,8 +44,7 @@ class Ingredient {
       this.selectFilter();
 
       addFilter('Ingredient', this.ingredient);
-      checkFilter();
-      renderRecipes();
+      refresh();
     })
   }
 
@@ -71,6 +70,8 @@ class Ingredient {
     // Event
     img.addEventListener('click', () => {
       img.parentNode.remove();
+      removeFilter(span.textContent);
+      renderRecipes();
     })
   }
 

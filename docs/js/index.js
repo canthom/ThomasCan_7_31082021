@@ -1,21 +1,28 @@
 // IMPORTS
 import { renderRecipes } from './functions/renderRecipes.js';
+import { renderFilters } from './functions/renderFilters.js';
 import { Appliance } from './class/Appliance.js';
 import { Ustensil } from './class/Ustensil.js';
 import { Ingredient } from './class/Ingredient.js';
-import { startSearch } from './functions/searchTwo.js';
+import { startSearch } from './functions/search.js';
+import { recipes } from './recipes.js';
 
 // INITIALISATION DES CLASSES
 Appliance.init();
 Ustensil.init();
 Ingredient.init();
 
-// VARIABLES
-let filters = [];
-export { filters };
-
 // AFFICHAGE PAR DEFAUT DE LA PAGE
-renderRecipes();
+let test = [...recipes];
+
+function refresh() {
+  renderRecipes(test);
+  renderFilters(test);
+}
+export { refresh };
+
+renderRecipes(test);
+renderFilters(test);
 
 // RECHERCHE
-startSearch();
+startSearch(test);

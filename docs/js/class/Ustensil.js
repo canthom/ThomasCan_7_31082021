@@ -1,5 +1,6 @@
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
+import { refresh } from '../index.js';
 
 class Ustensil {
   constructor(ustensil) {
@@ -43,7 +44,7 @@ class Ustensil {
       this.selectFilter();
 
       addFilter('Ustensil', this.ustensil);
-      renderRecipes();
+      refresh();
     })
   }
 
@@ -71,7 +72,6 @@ class Ustensil {
       img.parentNode.remove();
       removeFilter(this.ustensil);
       renderRecipes();
-      renderFilters();
     })
   }
 

@@ -1,5 +1,6 @@
 import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
+import { refresh } from '../index.js';
 
 class Appliance {
   constructor(appliance) {
@@ -42,9 +43,8 @@ class Appliance {
     li.addEventListener('click', () => {
       this.selectFilter();
       
-      ////// TEST
       addFilter('Appliance', this.appliance);
-      renderRecipes();
+      refresh();
     })
   }
 
