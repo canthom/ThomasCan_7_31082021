@@ -5,7 +5,9 @@ import { Appliance } from './class/Appliance.js';
 import { Ustensil } from './class/Ustensil.js';
 import { Ingredient } from './class/Ingredient.js';
 import { startSearch } from './functions/search.js';
+import { startSearchFilter } from './functions/searchFilter.js';
 import { recipes } from './recipes.js';
+import { checkFilter } from './functions/checkFilter.js';
 
 // INITIALISATION DES CLASSES
 Appliance.init();
@@ -26,4 +28,5 @@ renderRecipes(result);
 renderFilters(result);
 
 // RECHERCHE
-startSearch(result);
+startSearch();
+startSearchFilter();

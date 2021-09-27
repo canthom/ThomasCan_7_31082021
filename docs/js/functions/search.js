@@ -16,7 +16,6 @@ function startSearch() {
   if (search.value.length > 3) {
     container.innerHTML = '';
     result = result.filter(element => {
-      console.log(element.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()));
       return  element.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()) || element.description.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()) || element.ingredients.find(element => element.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()));
     });
 
