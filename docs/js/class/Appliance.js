@@ -1,4 +1,3 @@
-import { renderRecipes } from '../functions/renderRecipes.js';
 import { addFilter, removeFilter } from '../functions/addFilter.js';
 import { refresh } from '../index.js';
 

@@ -1,4 +1,3 @@
-import { Recipe } from '../class/Recipe.js';
 import { recipes } from '../recipes.js';
 import { checkFilter } from './checkFilter.js';
 import { renderRecipes } from './renderRecipes.js';
@@ -18,7 +17,6 @@ function startSearch() {
     result = result.filter(element => {
       return  element.name.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()) || element.description.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()) || element.ingredients.find(element => element.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()));
     });
-
     renderRecipes(result);
   }
 
