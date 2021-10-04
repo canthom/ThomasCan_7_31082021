@@ -9,15 +9,18 @@ class Ingredient {
   static close() {
     window.addEventListener('click', (e) => {
       const box = document.querySelector('.filters-list__box--ingredients');
+      const input = document.querySelector('#ingredientsSearch');
       if (!e.target.closest('.filters-list__box--ingredients div')) {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
+        input.value = '';
+        refresh();
       }
     })
   }
 
   static open() {
-    const ingredientsOpen = document.querySelector('#ingredientsOpen');
+    const ingredientsOpen = document.querySelector('.filters-list__box--ingredients');
     ingredientsOpen.addEventListener('click', (e) => {
       e.preventDefault();
       const box = document.querySelector('.filters-list__box--ingredients');

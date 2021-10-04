@@ -10,15 +10,18 @@ class Ustensil {
   static close() {
     window.addEventListener('click', (e) => {
       const box = document.querySelector('.filters-list__box--ustensils');
+      const input = document.querySelector('#ustensilsSearch');
       if (!e.target.closest('.filters-list__box--ustensils div')) {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
+        input.value = '';
+        refresh();
       }
     })
   }
 
   static open() {
-    const ustensilsOpen = document.querySelector('#ustensilsOpen');
+    const ustensilsOpen = document.querySelector('.filters-list__box--ustensils');
     ustensilsOpen.addEventListener('click', (e) => {
       e.preventDefault();
       const box = document.querySelector('.filters-list__box--ustensils');

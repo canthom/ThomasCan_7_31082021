@@ -1,12 +1,11 @@
 // IMPORTS
 import { renderRecipes } from './functions/renderRecipes.js';
-import { renderFilters } from './functions/renderFilters.js';
+import { renderFiltersList } from './functions/renderFiltersList.js';
 import { Appliance } from './class/Appliance.js';
 import { Ustensil } from './class/Ustensil.js';
 import { Ingredient } from './class/Ingredient.js';
-import { startSearch } from './functions/search.js';
-import { startSearchFilter } from './functions/searchFilter.js';
 import { recipes } from './recipes.js';
+import { searchFilterIngredients, searchFilterAppliances, searchFilterUstensils } from './functions/searchFilter.js';
 
 // INITIALISATION DES CLASSES
 Appliance.init();
@@ -18,7 +17,7 @@ let result = [...recipes];
 
 function refresh() {
   renderRecipes(result);
-  renderFilters(result);
+  renderFiltersList(result);
 }
 refresh();
 export { refresh };

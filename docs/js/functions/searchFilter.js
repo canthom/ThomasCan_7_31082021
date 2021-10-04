@@ -1,47 +1,59 @@
+import { refresh } from '../index.js';
 import { recipes } from '../recipes.js';
 import { checkFilter } from './checkFilter.js';
-import { refresh } from '../index.js';
-import { renderFilters } from './renderFilters.js';
+import { renderFiltersList } from './renderFiltersList.js';
 
-const searchFilter = document.querySelectorAll('.filters-list div input');
 const searchIngredients = document.querySelector('#ingredientsSearch');
-const searchAppliance = document.querySelector('#applianceSearch');
+const searchAppliances = document.querySelector('#applianceSearch');
 const searchUstensils = document.querySelector('#ustensilsSearch');
 let result = [...recipes];
 
-function startSearchFilter() {
+// Recherche parmi les filtres Ingredients
+function searchFilterIngredients(e) {
   result = [...recipes];
   checkFilter(result);
 
-  if (searchIngredients.value.length > 2) {
-    result = result.filter(element => {
-      return element.ingredients.find(element => element.ingredient.toLocaleLowerCase().match(searchIngredients.value.toLocaleLowerCase()));
-    })
-  }
-  
-  if (searchAppliance.value.length > 2) {
-    result = result.filter(element =>  {
-      return element.appliance.toLocaleLowerCase().includes(searchAppliance.value.toLocaleLowerCase());
-    })
-    renderFilters(result);
+  if (e.target.value.length > 1) {
+    let searchValue = e.target.value; 
+    renderFiltersList(result, searchValue);
   }
 
-  if (searchUstensils.value.length > 2) {
-    result = result.filter(element =>  {
-      return element.ustensils.find(element => element.toLocaleLowerCase().match(searchUstensils.value.toLocaleLowerCase()));
-    })
-    renderFilters(result);
+  if (e.target.value.length === 0) {
+    renderFiltersList(result);
   }
-
-  searchFilter.forEach(element => {
-    if (element.value.length === 0) {
-      renderFilters(result);
-    }
-  })
 }
+searchIngredients.oninput = searchFilterIngredients;
 
-searchFilter.forEach(element => {
-  element.oninput = startSearchFilter;
-})
+// Recherche parmi les filtres Appareils
+function searchFilterAppliances(e) {
+  result = [...recipes];
+  checkFilter(result);
 
-export { startSearchFilter };
+  if (e.target.value) {
+    let searchValue = e.target.value;
+    renderFiltersList(result, searchValue);
+  }
+
+  if (e.target.value.length === 0) {
+    renderFiltersList(result);
+  }
+}
+searchAppliances.oninput = searchFilterAppliances;
+
+// Recherche parmi les filtres Appareils
+function searchFilterUstensils(e) {
+  result = [...recipes];
+  checkFilter(result);
+
+  if (e.target.value) {
+    let searchValue = e.target.value; 
+    renderFiltersList(result, searchValue);
+  }
+
+  if (e.target.value.length === 0) {
+    renderFiltersList(result);
+  }
+}
+searchUstensils.oninput = searchFilterUstensils;
+
+export { searchFilterIngredients, searchFilterAppliances, searchFilterUstensils }; 

@@ -9,15 +9,18 @@ class Appliance {
   static close() {
     window.addEventListener('click', (e) => {
       const box = document.querySelector('.filters-list__box--appliance');
+      const input = document.querySelector('#applianceSearch');
       if (!e.target.closest('.filters-list__box--appliance div')) {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
+        input.value = '';
+        refresh();
       }
     })
   }
 
   static open() {
-    const appliancesOpen = document.querySelector('#appliancesOpen');
+    const appliancesOpen = document.querySelector('.filters-list__box--appliance');
     appliancesOpen.addEventListener('click', (e) => {
       e.preventDefault();
       const box = document.querySelector('.filters-list__box--appliance');

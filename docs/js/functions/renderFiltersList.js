@@ -1,33 +1,33 @@
 import { Appliance } from '../class/Appliance.js';
 import { Ustensil } from '../class/Ustensil.js';
 import { Ingredient } from '../class/Ingredient.js';
-import { sortArray } from '../functions/sortArray.js';
-import { checkFilter } from '../functions/checkFilter.js';
+import { sortArray } from './sortArray.js';
+import { checkFilter } from './checkFilter.js';
+import { generateFiltersList } from './generateFiltersList.js';
 
-function renderFilters(recipesArray) {
-  let ingredients = [];
-  let appliances = [];
-  let ustensils = [];
+let ingredients = [];
+let appliances = [];
+let ustensils = [];
+
+function renderFiltersList(recipesArray, searchValue) {
+  ingredients = [];
+  appliances = [];
+  ustensils = [];
 
   recipesArray = checkFilter(recipesArray);
-  
+
   // RESET DES FILTRES
   const uls = document.querySelectorAll('ul');
   uls.forEach(element => {
     element.innerHTML = '';
   })
 
-  recipesArray.forEach(element => {
-    element.ingredients.forEach(element => {
-      ingredients.push(element.ingredient);
-    })
-    appliances.push(element.appliance);
-    element.ustensils.forEach(element => {
-      ustensils.push(element);
-    })
-  })
+  // Génération des filtres
+  generateFiltersList(recipesArray, ingredients, 'ingredients', searchValue);
+  generateFiltersList(recipesArray, appliances, 'appliances', searchValue);
+  generateFiltersList(recipesArray, ustensils, 'ustensils', searchValue);
 
-  // Créer les filtres
+  // Représentation visuelle des filtres
   const ingredientsUnique = [...new Set(ingredients)];
   sortArray(ingredientsUnique);
   ingredientsUnique.forEach(element => {
@@ -50,4 +50,4 @@ function renderFilters(recipesArray) {
   })
 }
 
-export {renderFilters};
+export {renderFiltersList};
