@@ -1,8 +1,4 @@
-import { checkFilter, filters } from '../functions/checkFilter.js';
-
 function generateFiltersList(recipesArray, filtersList, filterType, searchValue) {
-  recipesArray = checkFilter(recipesArray);
-
   if (searchValue) {
     recipesArray.forEach(element => {
       if (filterType === 'ingredients') {

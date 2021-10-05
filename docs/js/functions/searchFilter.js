@@ -1,6 +1,5 @@
-import { refresh } from '../index.js';
 import { recipes } from '../recipes.js';
-import { checkFilter } from './checkFilter.js';
+import { isFilterActive } from './isFilterActive.js';
 import { renderFiltersList } from './renderFiltersList.js';
 
 const searchIngredients = document.querySelector('#ingredientsSearch');
@@ -11,7 +10,7 @@ let result = [...recipes];
 // Recherche parmi les filtres Ingredients
 function searchFilterIngredients(e) {
   result = [...recipes];
-  checkFilter(result);
+  isFilterActive(result);
 
   if (e.target.value.length > 1) {
     let searchValue = e.target.value; 
@@ -21,13 +20,20 @@ function searchFilterIngredients(e) {
   if (e.target.value.length === 0) {
     renderFiltersList(result);
   }
+
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('#ingredientsSearch')) {
+      e.target.value = '';
+      renderFiltersList(result);
+    }
+  })
 }
 searchIngredients.oninput = searchFilterIngredients;
 
 // Recherche parmi les filtres Appareils
 function searchFilterAppliances(e) {
   result = [...recipes];
-  checkFilter(result);
+  isFilterActive(result);
 
   if (e.target.value) {
     let searchValue = e.target.value;
@@ -37,13 +43,20 @@ function searchFilterAppliances(e) {
   if (e.target.value.length === 0) {
     renderFiltersList(result);
   }
+
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('#applianceSearch')) {
+      e.target.value = '';
+      renderFiltersList(result);
+    }
+  })
 }
 searchAppliances.oninput = searchFilterAppliances;
 
 // Recherche parmi les filtres Appareils
 function searchFilterUstensils(e) {
   result = [...recipes];
-  checkFilter(result);
+  isFilterActive(result);
 
   if (e.target.value) {
     let searchValue = e.target.value; 
@@ -53,6 +66,13 @@ function searchFilterUstensils(e) {
   if (e.target.value.length === 0) {
     renderFiltersList(result);
   }
+
+  window.addEventListener('click', (e) => {
+    if (!e.target.closest('#ustensilsSearch')) {
+      e.target.value = '';
+      renderFiltersList(result);
+    }
+  })
 }
 searchUstensils.oninput = searchFilterUstensils;
 

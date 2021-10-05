@@ -1,4 +1,4 @@
-import { addFilter, removeFilter } from '../functions/addFilter.js';
+import { addFilter, removeFilter } from '../functions/isFilterActive.js';
 import { refresh } from '../index.js';
 
 class Appliance {
@@ -14,7 +14,6 @@ class Appliance {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
         input.value = '';
-        refresh();
       }
     })
   }
@@ -44,7 +43,6 @@ class Appliance {
     
     li.addEventListener('click', () => {
       this.selectFilter();
-      
       addFilter('Appliance', this.appliance);
       refresh();
     })

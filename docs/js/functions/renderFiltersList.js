@@ -2,7 +2,7 @@ import { Appliance } from '../class/Appliance.js';
 import { Ustensil } from '../class/Ustensil.js';
 import { Ingredient } from '../class/Ingredient.js';
 import { sortArray } from './sortArray.js';
-import { checkFilter } from './checkFilter.js';
+import { isFilterActive } from './isFilterActive.js';
 import { generateFiltersList } from './generateFiltersList.js';
 
 let ingredients = [];
@@ -14,7 +14,7 @@ function renderFiltersList(recipesArray, searchValue) {
   appliances = [];
   ustensils = [];
 
-  recipesArray = checkFilter(recipesArray);
+  recipesArray = isFilterActive(recipesArray);
 
   // RESET DES FILTRES
   const uls = document.querySelectorAll('ul');

@@ -1,6 +1,6 @@
 let filters = [];
 
-function checkFilter(recipesArray) {
+function isFilterActive(recipesArray) {
   filters.forEach(element => {
     const elemValue = element.value;
 
@@ -25,4 +25,12 @@ function checkFilter(recipesArray) {
   return recipesArray;
 }
 
-export { checkFilter, filters };
+function addFilter(type, value) {
+  filters.push({type: type, value:value});
+}
+
+function removeFilter(param) {
+  filters.splice(filters.findIndex(element => element.value === param), 1);
+}
+
+export { isFilterActive, addFilter, removeFilter };

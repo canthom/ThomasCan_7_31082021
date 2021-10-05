@@ -38,4 +38,4 @@ function startSearch() {
   }
 }
 
-export {startSearch};
+//export {startSearch};

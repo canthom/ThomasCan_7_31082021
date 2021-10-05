@@ -1,11 +1,12 @@
 import { Recipe } from '../class/Recipe.js';
-import { checkFilter } from '../functions/checkFilter.js';
+import { refresh } from '../index.js';
+import { isFilterActive } from './isFilterActive.js';
 
 function renderRecipes(recipesArray) {
   // RESET
   document.querySelector('.section-result').innerHTML = '';
 
-  recipesArray = checkFilter(recipesArray);
+  recipesArray = isFilterActive(recipesArray);
 
   // RENDEMENT
   recipesArray.forEach(element => {

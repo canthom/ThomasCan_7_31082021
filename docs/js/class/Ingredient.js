@@ -1,4 +1,5 @@
-import { addFilter, removeFilter } from '../functions/addFilter.js';
+import { addFilter, removeFilter } from '../functions/isFilterActive.js';
+import { renderFiltersList } from '../functions/renderFiltersList.js';
 import { refresh } from '../index.js';
 
 class Ingredient {
@@ -14,7 +15,6 @@ class Ingredient {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
         input.value = '';
-        refresh();
       }
     })
   }
