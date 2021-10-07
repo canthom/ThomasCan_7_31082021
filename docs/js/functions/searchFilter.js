@@ -23,7 +23,7 @@ function searchFilterIngredients(e) {
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#ingredientsSearch')) {
-      e.target.value = '';
+      searchIngredients.value = '';
       renderFiltersList(result);
     }
   })
@@ -46,7 +46,7 @@ function searchFilterAppliances(e) {
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#applianceSearch')) {
-      e.target.value = '';
+      searchAppliances.value = '';
       renderFiltersList(result);
     }
   })
@@ -69,7 +69,7 @@ function searchFilterUstensils(e) {
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#ustensilsSearch')) {
-      e.target.value = '';
+      searchUstensils.value = '';
       renderFiltersList(result);
     }
   })

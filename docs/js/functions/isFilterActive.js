@@ -22,6 +22,7 @@ function isFilterActive(recipesArray) {
       })
     }
   })
+  
   return recipesArray;
 }
 

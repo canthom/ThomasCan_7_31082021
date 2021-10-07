@@ -14,7 +14,6 @@ class Ingredient {
       if (!e.target.closest('.filters-list__box--ingredients div')) {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
-        input.value = '';
       }
     })
   }

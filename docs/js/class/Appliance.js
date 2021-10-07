@@ -13,7 +13,6 @@ class Appliance {
       if (!e.target.closest('.filters-list__box--appliance div')) {
         box.classList.remove('filters-list__box--active');
         box.classList.add('filters-list__box--inactive');
-        input.value = '';
       }
     })
   }
