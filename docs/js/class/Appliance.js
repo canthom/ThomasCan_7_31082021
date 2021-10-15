@@ -1,4 +1,4 @@
-import { addFilter, removeFilter } from '../functions/isFilterActive.js';
+import { addFilter, removeFilter } from '../functions/applyFilter.js';
 import { refresh } from '../index.js';
 
 class Appliance {

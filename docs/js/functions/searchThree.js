@@ -25,7 +25,7 @@ function startSearch() {
         filteredResult.push(result[i]);
       }
 
-      if (result[i].ingredients.find(el => el.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))){
+      if (result[i].ingredients.find(el => el.ingredient.toLocaleLowerCase().includes(search.value.toLocaleLowerCase()))) {
         filteredResult.push(result[i]);
       }
     }

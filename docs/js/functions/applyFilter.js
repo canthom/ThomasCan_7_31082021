@@ -1,6 +1,6 @@
 let filters = [];
 
-function isFilterActive(recipesArray) {
+function applyFilter(recipesArray) {
   filters.forEach(element => {
     const elemValue = element.value;
 
@@ -34,4 +34,4 @@ function removeFilter(param) {
   filters.splice(filters.findIndex(element => element.value === param), 1);
 }
 
-export { isFilterActive, addFilter, removeFilter };
+export { applyFilter, addFilter, removeFilter };

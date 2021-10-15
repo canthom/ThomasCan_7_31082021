@@ -1,30 +1,28 @@
-import { recipes } from '../recipes.js';
-import { isFilterActive } from './isFilterActive.js';
+import { applyFilter } from './applyFilter.js';
 import { renderFiltersList } from './renderFiltersList.js';
+import { resultFiltered } from '../index.js';
 
 const searchIngredients = document.querySelector('#ingredientsSearch');
 const searchAppliances = document.querySelector('#applianceSearch');
 const searchUstensils = document.querySelector('#ustensilsSearch');
-let result = [...recipes];
 
 // Recherche parmi les filtres Ingredients
 function searchFilterIngredients(e) {
-  result = [...recipes];
-  isFilterActive(result);
+  applyFilter(resultFiltered);
 
   if (e.target.value.length > 1) {
     let searchValue = e.target.value; 
-    renderFiltersList(result, searchValue);
+    renderFiltersList(resultFiltered, searchValue);
   }
 
   if (e.target.value.length === 0) {
-    renderFiltersList(result);
+    renderFiltersList(resultFiltered);
   }
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#ingredientsSearch')) {
       searchIngredients.value = '';
-      renderFiltersList(result);
+      renderFiltersList(resultFiltered);
     }
   })
 }
@@ -32,22 +30,21 @@ searchIngredients.oninput = searchFilterIngredients;
 
 // Recherche parmi les filtres Appareils
 function searchFilterAppliances(e) {
-  result = [...recipes];
-  isFilterActive(result);
+  applyFilter(resultFiltered);
 
   if (e.target.value) {
     let searchValue = e.target.value;
-    renderFiltersList(result, searchValue);
+    renderFiltersList(resultFiltered, searchValue);
   }
 
   if (e.target.value.length === 0) {
-    renderFiltersList(result);
+    renderFiltersList(resultFiltered);
   }
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#applianceSearch')) {
       searchAppliances.value = '';
-      renderFiltersList(result);
+      renderFiltersList(resultFiltered);
     }
   })
 }
@@ -55,22 +52,21 @@ searchAppliances.oninput = searchFilterAppliances;
 
 // Recherche parmi les filtres Appareils
 function searchFilterUstensils(e) {
-  result = [...recipes];
-  isFilterActive(result);
+  applyFilter(resultFiltered);
 
   if (e.target.value) {
     let searchValue = e.target.value; 
-    renderFiltersList(result, searchValue);
+    renderFiltersList(resultFiltered, searchValue);
   }
 
   if (e.target.value.length === 0) {
-    renderFiltersList(result);
+    renderFiltersList(resultFiltered);
   }
 
   window.addEventListener('click', (e) => {
     if (!e.target.closest('#ustensilsSearch')) {
       searchUstensils.value = '';
-      renderFiltersList(result);
+      renderFiltersList(resultFiltered);
     }
   })
 }
