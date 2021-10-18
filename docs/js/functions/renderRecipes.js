@@ -1,5 +1,4 @@
 import { Recipe } from '../class/Recipe.js';
-import { refresh } from '../index.js';
 import { applyFilter } from './applyFilter.js';
 
 function renderRecipes(recipesArray) {
