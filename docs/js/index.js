@@ -27,7 +27,6 @@ function startSearch(event) {
     const container = document.querySelector('.section-result');
     container.innerHTML = '';
     resultFiltered = searchRecipes(resultFiltered, event.target.value)
-    console.log(resultFiltered.length);
 
     if (resultFiltered.length === 0) {
       container.innerHTML = `Aucune recette ne correspond à votre critère… vous pouvez
