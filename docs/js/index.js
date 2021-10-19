@@ -26,12 +26,27 @@ function startSearch(event) {
   if (event.target.value.length > 3) {
     const container = document.querySelector('.section-result');
     container.innerHTML = '';
-    resultFiltered = searchRecipes(resultFiltered, event.target.value)
-    console.log(resultFiltered.length);
+    let searchResults = [];
+
+    for (let i = 0; i < resultFiltered.length; i+= 1) {
+      if (resultFiltered[i].name.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase())) {
+        searchResults.push(resultFiltered[i]);
+      }
+  
+      if (resultFiltered[i].description.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase())) {
+        searchResults.push(resultFiltered[i]);
+      }
+  
+      if (resultFiltered[i].ingredients.find(element => element.ingredient.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase()))) {
+        searchResults.push(resultFiltered[i]);
+      }
+    }
+    const searchResultsUnique = [...new Set(searchResults)];
+    resultFiltered = searchResultsUnique;
 
     if (resultFiltered.length === 0) {
       container.innerHTML = `Aucune recette ne correspond à votre critère… vous pouvez
-      chercher « tarte aux pommes », « poisson », etc`
+      chercher « tarte aux pommes », « poisson », etc`;
     } else {
       refresh();
     }
@@ -41,12 +56,6 @@ function startSearch(event) {
     resultFiltered = applyFilter(result);
     refresh();
   }
-}
-
-function searchRecipes(recipesList, value) {
-  return recipesList.filter(element => {
-    return element.name.toLocaleLowerCase().match(value.toLocaleLowerCase()) || element.description.toLocaleLowerCase().match(value.toLocaleLowerCase()) || element.ingredients.find(element => element.ingredient.toLocaleLowerCase().match(value.toLocaleLowerCase()));
-  });
 }
 
 search.oninput = startSearch;
