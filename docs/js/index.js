@@ -26,23 +26,7 @@ function startSearch(event) {
   if (event.target.value.length > 3) {
     const container = document.querySelector('.section-result');
     container.innerHTML = '';
-    let searchResults = [];
-
-    for (let i = 0; i < resultFiltered.length; i+= 1) {
-      if (resultFiltered[i].name.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase())) {
-        searchResults.push(resultFiltered[i]);
-      }
-  
-      if (resultFiltered[i].description.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase())) {
-        searchResults.push(resultFiltered[i]);
-      }
-  
-      if (resultFiltered[i].ingredients.find(element => element.ingredient.toLocaleLowerCase().match(event.target.value.toLocaleLowerCase()))) {
-        searchResults.push(resultFiltered[i]);
-      }
-    }
-    const searchResultsUnique = [...new Set(searchResults)];
-    resultFiltered = searchResultsUnique;
+    resultFiltered = searchRecipes(resultFiltered, event.target.value);
 
     if (resultFiltered.length === 0) {
       container.innerHTML = `Aucune recette ne correspond à votre critère… vous pouvez
@@ -56,6 +40,25 @@ function startSearch(event) {
     resultFiltered = applyFilter(result);
     refresh();
   }
+}
+
+function searchRecipes(recipesList, value) {
+  let searchResults = [];
+
+  for (let i = 0; i < recipesList.length; i += 1) {
+    if (recipesList[i].name.toLocaleLowerCase().match(value.toLocaleLowerCase())) {
+      searchResults.push(recipesList[i]);
+    }
+
+    if (recipesList[i].description.toLocaleLowerCase().match(value.toLocaleLowerCase())) {
+      searchResults.push(recipesList[i]);
+    }
+
+    if (recipesList[i].ingredients.find(element => element.ingredient.toLocaleLowerCase().match(value.toLocaleLowerCase()))) {
+      searchResults.push(recipesList[i]);
+    }
+  }
+  return [...new Set(searchResults)];
 }
 
 search.oninput = startSearch;
